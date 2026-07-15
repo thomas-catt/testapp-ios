@@ -11,6 +11,12 @@ struct CounterView: View {
             count += c
         }
     }
+    
+    private func resetCount() {
+        withAnimation(.spring()) {
+            count = 0
+        }
+    }
 
     var body: some View {
         VStack(spacing: 30) {
@@ -76,6 +82,17 @@ struct CounterView: View {
             .padding(.horizontal)
             
             // TODO: Add a Reset Button at the bottom to reset count to 0
+            
+            HStack(spacing: 20) {
+                Button(action: {
+                    resetCount()
+                }) {
+                    Text("Reset Counter")
+                        .foregroundColor(.blue)
+                }
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.horizontal)
             
             Spacer()
         }
